@@ -26,7 +26,7 @@ export default class Home extends Vue {
     this.selectedInterests.forEach(function (element) {
       travelApi.fetchResults(this.selectedDestination, element.toLowerCase()).then(results => {
         console.log(results);
-        this.items = results.data
+        this.items = results.data.results
         //this.items.concat(results.data);
         console.log(this.items)
       }).catch(err => {

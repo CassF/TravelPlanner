@@ -21,7 +21,8 @@
             <template slot="items" slot-scope="props">
               <tr @click="props.expanded = !props.expanded">
                 <td class="text-xs-left">{{ props.item.name }}</td>
-                <td class="text-xs-left">{{ props.item.address }}</td>
+                <td class="text-xs-left">{{ props.item.formatted_address
+                  }}</td>
               </tr>
             </template>
             <template slot="expand" slot-scope="props">
