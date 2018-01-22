@@ -9,9 +9,31 @@
           persistent-hint></v-select>
       </v-flex>
       <v-flex xs2>
-          <v-btn block depressed color="primary" @click="checkArray()">Search
-              <v-icon right dark>search</v-icon>
-          </v-btn>
+        <v-btn block depressed color="primary" @click="checkArray()">Search
+          <v-icon right dark>search</v-icon>
+        </v-btn>
+      </v-flex>
+    </v-layout>
+    <v-layout>
+      <v-flex xs10>
+        <div v-if="items.length > 0">
+          <v-data-table :headers="headers" :items="items" :pagination.sync="pagination" hide-actions class="elevation-1">
+            <template slot="items" slot-scope="props">
+              <tr @click="props.expanded = !props.expanded">
+                <td class="text-xs-left">{{ props.item.name }}</td>
+                <td class="text-xs-left">{{ props.item.address }}</td>
+              </tr>
+            </template>
+            <template slot="expand" slot-scope="props">
+                <v-card flat>
+                  <v-card-text>Peek-a-boo!</v-card-text>
+                </v-card>
+              </template>
+          </v-data-table>
+          <div class="text-xs-center pt-2">
+            <v-pagination v-model="pagination.page" :length="pages"></v-pagination>
+          </div>
+        </div>
       </v-flex>
     </v-layout>
   </v-container>
