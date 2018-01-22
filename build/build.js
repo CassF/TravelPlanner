@@ -2,7 +2,7 @@
 require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
-
+const cors = require('cors')
 const ora = require('ora')
 const rm = require('rimraf')
 const path = require('path')
