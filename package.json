@@ -13,12 +13,13 @@
     "axios": "^0.17.1",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
+    "dotenv-webpack": "^1.5.4",
     "express": "^4.16.2",
     "restler": "^3.4.0",
     "vue": "^2.5.2",
     "vue-property-decorator": "^6.0.0",
     "vue-router": "^3.0.1",
-    "vuetify": "^0.17.6"
+    "vuetify": "^1.0.0-beta.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -2,24 +2,30 @@
   <v-container grid-list-md text-xs-center>
     <v-layout row wrap>
       <v-flex xs5>
-        <v-select :items="countries" v-model="selectedDestination" label="Destination" autocomplete></v-select>
+        <v-select :items="countries" item-text="name" item-value="countries" v-model="selectedDestination" label="Destination" autocomplete></v-select>
       </v-flex>
       <v-flex xs5>
         <v-select :items="options" v-model="selectedInterests" multiple chips deletable-chips hint="What are you interested in?"
           persistent-hint></v-select>
       </v-flex>
       <v-flex xs2>
-        <v-btn block depressed color="primary" @click="checkArray()">Search
+        <v-btn block depressed color="primary" @click="fetchSearchResults()">Search
           <v-icon right dark>search</v-icon>
         </v-btn>
       </v-flex>
     </v-layout>
     <v-layout>
-      <v-flex xs10>
-        <div v-if="items.length > 0">
+      <v-flex xs12>
+          <template v-for="(item, index) in items">
+            <!-- <div v-if="item.photos.length > 0"><img :ng-src=`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{item.photos[0].photo_reference}}&key=AIzaSyBTp182BVjiJfS3mqywnfh3f0Y9RQnh6X0`></img></div> -->
+              <div>{{item.name}}</div>
+              <div>{{item.formatted_address}}</div>
+            </template>
+        <!-- <div v-if="items.length > 0">
           <v-data-table :headers="headers" :items="items" :pagination.sync="pagination" hide-actions class="elevation-1">
             <template slot="items" slot-scope="props">
               <tr @click="props.expanded = !props.expanded">
+                <td><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyBTp182BVjiJfS3mqywnfh3f0Y9RQnh6X0"></img></td>
                 <td class="text-xs-left">{{ props.item.name }}</td>
                 <td class="text-xs-left">{{ props.item.formatted_address
                   }}</td>
@@ -34,7 +40,7 @@
           <div class="text-xs-center pt-2">
             <v-pagination v-model="pagination.page" :length="pages"></v-pagination>
           </div>
-        </div>
+        </div> -->
       </v-flex>
     </v-layout>
   </v-container>

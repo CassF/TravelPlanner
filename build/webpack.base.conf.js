@@ -4,6 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const cors = require('cors')
+const Dotenv = require('dotenv-webpack');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -69,6 +70,12 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new Dotenv({
+      path: './.env', // Path to .env file (this is the default) 
+      safe: true // load .env.example (defaults to "false" which does not use dotenv-safe) 
+    })
+  ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).

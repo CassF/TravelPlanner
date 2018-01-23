@@ -7,10 +7,19 @@ export default class Home extends Vue {
   selectedDestination = null;
   selectedInterests = null;
   searchResults = null;
+  // countries = [
+  //   'London', 'Barcelona', 'Amsterdam', 'Berlin',
+  //   'Dubai', 'Paris', 'Rome'
+  // ];
   countries = [
-    'London', 'Barcelona', 'Amsterdam', 'Berlin',
-    'Dubai', 'Paris', 'Rome'
-  ];
+    {name: 'London', latitude:'51.5074', longitude: '0.1278'},
+    {name: 'Barcelona', latitude:'41.3851', longitude: '2.1734'},
+    {name: 'Amsterdam', latitude:'52.3702', longitude: '4.8952'},
+    {name: 'Berlin', latitude:'52.5200', longitude: '13.4050'},
+    {name: 'Dubai', latitude:'25.2048', longitude: '55.2708'},
+    {name: 'Paris', latitude:'48.8566', longitude: '2.3522'},
+    {name: 'Rome', latitude:'41.9028', longitude: '12.4964'}
+  ]
   options = [
     'Accommodation', 'Attraction', 'Restaurant', 'POI'
   ];
@@ -20,15 +29,16 @@ export default class Home extends Vue {
   ]
   items = [];
   page = 1;
-  pagination = {};
+  pagination = {rowsPerPage: 10};
 
-  checkArray() {
+  fetchSearchResults() {
+    this.items = [];
     this.selectedInterests.forEach(function (element) {
       travelApi.fetchResults(this.selectedDestination, element.toLowerCase()).then(results => {
-        console.log(results);
-        this.items = results.data.results
-        //this.items.concat(results.data);
-        console.log(this.items)
+        results.data.results.forEach(function(element) {
+          this.items.push(element)
+        }, this);
+        console.log(this.items[0].photos[0].photo_reference);
       }).catch(err => {
         console.log(err);
       })
