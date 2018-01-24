@@ -14,35 +14,35 @@
         </v-btn>
       </v-flex>
     </v-layout>
-    <v-layout>
-      <v-flex xs12>
-          <template v-for="(item, index) in items">
-            <!-- <div v-if="item.photos.length > 0"><img :ng-src=`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{item.photos[0].photo_reference}}&key=AIzaSyBTp182BVjiJfS3mqywnfh3f0Y9RQnh6X0`></img></div> -->
-              <div>{{item.name}}</div>
-              <div>{{item.formatted_address}}</div>
-            </template>
-        <!-- <div v-if="items.length > 0">
-          <v-data-table :headers="headers" :items="items" :pagination.sync="pagination" hide-actions class="elevation-1">
-            <template slot="items" slot-scope="props">
-              <tr @click="props.expanded = !props.expanded">
-                <td><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyBTp182BVjiJfS3mqywnfh3f0Y9RQnh6X0"></img></td>
-                <td class="text-xs-left">{{ props.item.name }}</td>
-                <td class="text-xs-left">{{ props.item.formatted_address
-                  }}</td>
-              </tr>
-            </template>
-            <template slot="expand" slot-scope="props">
-                <v-card flat>
-                  <v-card-text>Peek-a-boo!</v-card-text>
-                </v-card>
-              </template>
-          </v-data-table>
-          <div class="text-xs-center pt-2">
-            <v-pagination v-model="pagination.page" :length="pages"></v-pagination>
+    <template>
+        <div v-for="(item, index) in items" id="e3"  style="max-width: 600px;" class="grey lighten-3">
+            <v-card>
+              <v-container fluid style="min-height: 0;" grid-list-lg>
+                <v-layout row wrap>
+                  <v-flex xs12>
+                    <v-card color="primary" class="white--text">
+                      <v-container fluid grid-list-lg>
+                        <v-layout row>
+                            <v-flex xs7>
+                                <div>
+                                  <div class="headline">{{item.name}}</div>
+                                  <div>{{item.vicinity}}</div>
+                                </div>
+                              </v-flex>
+                          <v-flex xs5>
+                            <v-card-media src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyBTp182BVjiJfS3mqywnfh3f0Y9RQnh6X0"
+                              height="125px" contain></v-card-media>
+                          </v-flex>
+                        </v-layout>
+                      </v-container>
+                    </v-card>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card>
           </div>
-        </div> -->
-      </v-flex>
-    </v-layout>
+          <v-pagination :length="4" v-model="page" circle></v-pagination>
+    </template>
   </v-container>
 </template>
 

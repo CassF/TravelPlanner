@@ -33,15 +33,19 @@ export default class Home extends Vue {
 
   fetchSearchResults() {
     this.items = [];
+
     this.selectedInterests.forEach(function (element) {
       travelApi.fetchResults(this.selectedDestination, element.toLowerCase()).then(results => {
         results.data.results.forEach(function(element) {
           this.items.push(element)
         }, this);
-        console.log(this.items[0].photos[0].photo_reference);
       }).catch(err => {
         console.log(err);
       })
+    }, this);
+
+    this.items.forEach(function (element){
+      console.log("hello");
     }, this);
   }
 

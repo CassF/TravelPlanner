@@ -11,7 +11,7 @@ export default class SearchResults {
         return new Promise(
             (resolve, reject) => {
                 console.log(process.env.G_KEY)
-                axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${destination.latitude},${destination.longitude}&radius=5000&name=${interest}&key=${process.env.G_KEY}`).then(response => {
+                axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${destination.latitude},${destination.longitude}&radius=5000&name=${interest}&key=AIzaSyDKbIAgG4tiJlIa1TZ4MEQ_MvnuIwcY2-U`).then(response => {
                 resolve(response)    
                 console.log(response)
                 }).catch(error => {
